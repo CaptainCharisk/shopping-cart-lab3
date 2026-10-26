@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lab 3 – Shopping Cart with Local Storage
 
-## Getting Started
+A shopping cart built with **Next.js (App Router)**, **Tailwind CSS** and **shadcn/ui** (Button, Card, Badge).
+Cart data is persisted in the browser's **Local Storage**.
 
-First, run the development server:
+## Features
+- Product list (name, image, price) with a quantity selector and **Add to Cart** button
+- Adding an existing product increases its quantity
+- Cart saved to Local Storage and restored on reload (also synced across tabs)
+- Header cart icon with total item count badge
+- Cart page: name, price, quantity, subtotal, increase/decrease, remove, cart total
+- Responsive layout for mobile and desktop
 
+## Structure
+- `src/context/CartContext.tsx` – cart state (`useState`) + Local Storage sync (`useEffect`)
+- `src/components/ProductCard.tsx`, `CartItem.tsx`, `CartIcon.tsx` – reusable components
+- `src/app/page.tsx` – product list, `src/app/cart/page.tsx` – cart page
+
+## Run locally
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open http://localhost:3000.
