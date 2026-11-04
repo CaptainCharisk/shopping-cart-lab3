@@ -6,7 +6,7 @@ import { Button, buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { CartItem } from "@/components/CartItem"
 import { useCart } from "@/context/CartContext"
-import { formatPrice } from "@/lib/products"
+import { CURRENCY_SYMBOL, formatAmount } from "@/lib/products"
 
 export default function CartPage() {
   const { items, totalItems, totalPrice, hydrated, clearCart } = useCart()
@@ -26,7 +26,7 @@ export default function CartPage() {
       ) : items.length === 0 ? (
         <div className="flex flex-col items-center gap-4 rounded-xl border border-dashed py-16 text-center">
           <ShoppingBag className="size-12 text-muted-foreground" />
-          <p className="text-muted-foreground">Your cart is empty.</p>
+          <p data-testid="empty-cart-msg" className="text-muted-foreground">Your cart is empty</p>
           <Link href="/" className={buttonVariants()}>
             Browse products
           </Link>
@@ -53,7 +53,9 @@ export default function CartPage() {
               </div>
               <div className="flex justify-between border-t pt-2 text-base font-semibold">
                 <span>Total</span>
-                <span className="tabular-nums">{formatPrice(totalPrice)}</span>
+                <span className="tabular-nums">
+                  <span data-testid="cart-total">{formatAmount(totalPrice)}</span> {CURRENCY_SYMBOL}
+                </span>
               </div>
             </CardContent>
             <CardFooter className="flex-col gap-2">

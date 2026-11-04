@@ -22,7 +22,7 @@ export function ProductCard({ product }: { product: Product }) {
   }
 
   return (
-    <Card className="overflow-hidden pt-0">
+    <Card data-testid="product-card" className="overflow-hidden pt-0">
       <div className="relative aspect-[3/2] bg-muted">
         <Image
           src={product.image}
@@ -40,7 +40,7 @@ export function ProductCard({ product }: { product: Product }) {
         <QuantitySelector value={quantity} onChange={setQuantity} />
       </CardContent>
       <CardFooter>
-        <Button className="w-full" onClick={handleAdd}>
+        <Button data-testid="add-to-cart-btn" className="w-full" onClick={handleAdd}>
           {added ? <Check /> : <ShoppingCart />}
           {added ? "Added!" : "Add to Cart"}
         </Button>
